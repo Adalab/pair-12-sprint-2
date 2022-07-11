@@ -95,7 +95,10 @@ function addNewKitten(event) {
         }
     }
     const newKittenDataObject = {};
-    newKittenDataObject.desc = "";
+    newKittenDataObject.desc = valueDesc;
+    newKittenDataObject.name = valueName;
+    newKittenDataObject.image = valuePhoto;
+
 
 
 
@@ -117,7 +120,7 @@ function cancelNewKitten(event) {
 //Filtrar por descripción
 function filterKitten(event) {
     event.preventDefault();
-    const descrSearchText = input_search_desc.value;
+const descrSearchText = input_search_desc.value;
     listElement.innerHTML = "";
     for (const kittenItem of kittenDataList) {
         if (kittenItem.desc.includes(descrSearchText)) {
@@ -129,6 +132,27 @@ function filterKitten(event) {
 //Mostrar el litado de gatitos en ell HTML
 renderKittenList(kittenDataList);
 
+const newKittenDataObject = {
+    image: "https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg",
+    name: "Anastacio",
+    desc: "Ruiseño, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!",
+    race: "British Shorthair",
+};
+
+
+kittenDataList.push(newKittenDataObject);
+renderKittenList(kittenDataList);
+
+
+//Limpiar Inputs
+    
+/*function cancelNewKitten(event) {
+    event.preventDefault();
+    newFormElement.classList.remove("collapsed");
+    inputDesc.value = "";
+    inputPhoto.value = "";
+    inputName.value = "";
+}*/
 
 
 //Eventos
