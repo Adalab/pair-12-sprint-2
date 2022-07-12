@@ -118,16 +118,29 @@ function cancelNewKitten(event) {
 }
 
 //Filtrar por descripción
-function filterKitten(event) {
+ function filterKitten(event) {
     event.preventDefault();
 const descrSearchText = input_search_desc.value;
-    listElement.innerHTML = "";
+    /*listElement.innerHTML = "";
     for (const kittenItem of kittenDataList) {
         if (kittenItem.desc.includes(descrSearchText)) {
             listElement.innerHTML += renderKitten(kittenItem);
         }
-    }
+    }*/
+    const filterDesc = kittenDataList.filter((kittenDataList) => input_search_desc.value);
+    console.log (filterDesc);
+    listElement.innerHTML = kittenItem.desc;
+
+
 }
+
+/* function filterKitten(ev) {
+    const filterDesc = kittenDataList.filter((risueño) => kittenItem.desc);
+    console.log (filterDesc); */
+    //Modifica el código:
+    //Haz un filter sobre el listado de gatitos
+    //Vuelve a pintar el listado de gatitos filtrados en el HTML.
+  
 
 //Mostrar el litado de gatitos en ell HTML
 renderKittenList(kittenDataList);
