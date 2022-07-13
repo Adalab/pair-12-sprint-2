@@ -118,29 +118,36 @@ function cancelNewKitten(event) {
 }
 
 //Filtrar por descripción
- function filterKitten(event) {
+function filterKitten(event) {
     event.preventDefault();
-const descrSearchText = input_search_desc.value;
-    /*listElement.innerHTML = "";
-    for (const kittenItem of kittenDataList) {
-        if (kittenItem.desc.includes(descrSearchText)) {
-            listElement.innerHTML += renderKitten(kittenItem);
-        }
-    }*/
-    const filterDesc = kittenDataList.filter((kittenDataList) => input_search_desc.value);
-    console.log (filterDesc);
-    listElement.innerHTML = kittenItem.desc;
+    const descrSearchText = input_search_desc.value;
+
+    const filterDesc = kittenDataList.filter((eachCat) => eachCat.desc.includes(descrSearchText));
+    console.log(filterDesc);
+    renderKittenList(filterDesc);
+
 
 
 }
+let kittenDataList = [];
+const GITHUB_USER = 'https://github.com/lauramargo';
+const SERVER_URL = `https://adalab-api.herokuapp.com/api/kittens/${GITHUB_USER}`;
+
+fetch(SERVER_URL, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+}).then((response) => response.json())
+    .then(())
+//Completa el código;
+
 
 /* function filterKitten(ev) {
     const filterDesc = kittenDataList.filter((risueño) => kittenItem.desc);
     console.log (filterDesc); */
-    //Modifica el código:
-    //Haz un filter sobre el listado de gatitos
-    //Vuelve a pintar el listado de gatitos filtrados en el HTML.
-  
+//Modifica el código:
+//Haz un filter sobre el listado de gatitos
+//Vuelve a pintar el listado de gatitos filtrados en el HTML.
+
 
 //Mostrar el litado de gatitos en ell HTML
 renderKittenList(kittenDataList);
@@ -158,7 +165,7 @@ renderKittenList(kittenDataList);
 
 
 //Limpiar Inputs
-    
+
 /*function cancelNewKitten(event) {
     event.preventDefault();
     newFormElement.classList.remove("collapsed");
