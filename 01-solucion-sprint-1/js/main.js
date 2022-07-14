@@ -133,19 +133,19 @@ function filterKitten(event) {
 
 
 
-const GITHUB_USER = 'https://github.com/lauramargo';
+const GITHUB_USER = 'lauramargo';
 const SERVER_URL = `https://adalab-api.herokuapp.com/api/kittens/${GITHUB_USER}`;
 
 fetch(SERVER_URL, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
-}) 
-.then((response) => response.json())
-.then((data) => {
-kittenDataList = data.result;
-renderKittenList(kittenDataList);
-}
-);
+})
+    .then((response) => response.json())
+    .then((data) => {
+        kittenDataList = data.results;
+        renderKittenList(kittenDataList);
+    }
+    );
 
 
 
