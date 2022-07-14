@@ -14,6 +14,7 @@ const linkNewFormElememt = document.querySelector('.js-button-new-form');
 const labelMesageError = document.querySelector('.js-label-error');
 const input_search_desc = document.querySelector('.js_in_search_desc');
 
+let kittenDataList = [];
 
 //Objetos con cada gatito
 const kittenData_1 = {
@@ -35,7 +36,7 @@ const kittenData_3 = {
     race: "British Shorthair",
 };
 
-const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
+//const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
 
 console.log(kittenDataList.newKittenDataObject);
 
@@ -129,15 +130,29 @@ function filterKitten(event) {
 
 
 }
-let kittenDataList = [];
+
+
+
 const GITHUB_USER = 'https://github.com/lauramargo';
 const SERVER_URL = `https://adalab-api.herokuapp.com/api/kittens/${GITHUB_USER}`;
 
 fetch(SERVER_URL, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
-}).then((response) => response.json())
-    .then(())
+}) 
+.then((response) => response.json())
+.then((data) => {
+kittenDataList = data.result;
+renderKittenList(kittenDataList);
+}
+);
+
+
+
+
+console.log(kittenDataList);
+
+
 //Completa el código;
 
 
