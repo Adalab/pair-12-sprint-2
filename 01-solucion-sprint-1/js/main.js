@@ -136,20 +136,30 @@ function filterKitten(event) {
 const GITHUB_USER = 'lauramargo';
 const SERVER_URL = `https://adalab-api.herokuapp.com/api/kittens/${GITHUB_USER}`;
 
-fetch(SERVER_URL, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-})
-    .then((response) => response.json())
-    .then((data) => {
-        kittenDataList = data.results;
-        renderKittenList(kittenDataList);
-        localStorage.setItem("kittensList", JSON.stringify(kittenDataList));
 
-        const kittenListStored = JSON.parse(localStorage.getItem("kittensList"));
-        console.log(kittenListStored);
-    }
-    );
+
+const kittenListStored = JSON.parse(localStorage.getItem("kittensList"));
+
+if (kittenListStored) {
+    kittenDataList = kittenListStored;
+    renderKittenList(kittenDataList);
+    console.log(kittenDataList);
+
+} else {
+    fetch(SERVER_URL, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            kittenDataList = data.results;
+            renderKittenList(kittenDataList);
+            localStorage.setItem("kittensList", JSON.stringify(kittenDataList));
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+}
 
 
 
