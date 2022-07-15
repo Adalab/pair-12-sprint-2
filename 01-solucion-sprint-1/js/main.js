@@ -144,13 +144,17 @@ fetch(SERVER_URL, {
     .then((data) => {
         kittenDataList = data.results;
         renderKittenList(kittenDataList);
+        localStorage.setItem("kittensList", JSON.stringify(kittenDataList));
+
+        const kittenListStored = JSON.parse(localStorage.getItem("kittensList"));
+        console.log(kittenListStored);
     }
     );
 
 
 
 
-console.log(kittenDataList);
+/*console.log(kittenDataList);*/
 
 
 //Completa el código;
